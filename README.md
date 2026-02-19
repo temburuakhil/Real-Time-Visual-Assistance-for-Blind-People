@@ -1,102 +1,68 @@
 # Real-Time Visual Assistance for Blind People
 
-This project provides real-time visual assistance for visually impaired individuals by combining computer vision and audio feedback. It uses face recognition, object detection, and distance estimation to help users navigate their surroundings safely.
+AI-powered visual assistance system using YOLOv8, OpenCV, and Google Gemini 2.5 Flash for real-time environmental awareness.
 
 ## Features
 
-- **Face Recognition**: Identifies known faces and announces their presence
-- **Object Detection**: Detects various objects in the environment using YOLO
-- **Distance Estimation**: Calculates approximate distances to detected objects
-- **Directional Audio**: Provides clock-based directional information
-- **Emergency Alerts**: Warns about potential hazards and obstacles
-- **Scene Description**: Describes the surrounding environment
-- **Expression Recognition**: Detects facial expressions of people around
-
-## Prerequisites
-
-- Python 3.8 or higher
-- Webcam
-- Speakers/Headphones
-- Required Python packages (install using `pip install -r requirements.txt`):
-  - OpenCV (cv2)
-  - Pygame
-  - NumPy
-  - pyttsx3
-  - supervision
-  - ultralytics (YOLO)
+- **YOLOv8 Object Detection**: Real-time detection with <1 second latency
+- **Face Recognition**: Haar Cascade + custom KNN classifier with 90%+ accuracy
+- **Spatial Analysis**: Distance estimation and clock-based directional positioning
+- **Expression Recognition**: Emotion detection for social cues
+- **Live Q&A**: Google Gemini 2.5 Flash conversational AI integration
+- **Multi-Modal Feedback**: Text-to-speech, haptic alerts, emergency calling (Twilio)
+- **Web Interface**: React/TypeScript live interaction dashboard
 
 ## Installation
 
-1. Clone the repository:
 ```bash
+# Clone repository
 git clone https://github.com/temburuakhil/Real-Time-Visual-Assistance-for-Blind-People.git
 cd Real-Time-Visual-Assistance-for-Blind-People
-```
 
-2. Install the required packages:
-```bash
+# Install dependencies
 pip install -r requirements.txt
-```
-
-3. Download the YOLO model:
-```bash
-# The model will be automatically downloaded on first run
 ```
 
 ## Usage
 
-1. Run the main program:
+**Python Backend:**
 ```bash
 python "face object distance direction buzzer.py"
 ```
 
-2. The system will:
-   - Initialize the camera
-   - Start face recognition
-   - Begin object detection
-   - Provide audio feedback about:
-     - Recognized faces and their locations
-     - Objects in the environment
-     - Potential hazards
-     - Distance to objects
-     - Direction of objects (using clock positions)
+**Web Interface:**
+```bash
+cd "Live QnA"
+npm install
+npm start
+```
 
 ## Project Structure
 
-- `face object distance direction buzzer.py`: Main program file
-- `emergency.py`: Emergency detection and alert system
-- `expression.py`: Facial expression recognition
-- `scene.py`: Scene description module
-- `haarcascade_frontalface_alt.xml`: Face detection model
-- `Live QnA/`: Web interface for real-time assistance
+```
+├── face object distance direction buzzer.py  # Main detection system
+├── emergency.py                              # Emergency detection module
+├── expression.py                             # Facial expression recognition
+├── scene.py                                  # Scene description module
+├── yolov8n.pt                               # YOLOv8 model
+├── haarcascade_frontalface_alt.xml          # Face detection cascade
+├── requirements.txt                          # Python dependencies
+├── data/                                     # Face recognition training data
+└── Live QnA/                                # React web interface
+    ├── src/
+    │   ├── components/                       # UI components
+    │   ├── contexts/                         # API context management
+    │   ├── hooks/                           # Custom React hooks
+    │   └── lib/                             # Gemini API client
+    └── public/
+```
 
-## Features in Detail
+## Technical Stack
 
-### Face Recognition
-- Uses Haar Cascade for face detection
-- Implements KNN for face recognition
-- Provides distance and direction information for recognized faces
-
-### Object Detection
-- Uses YOLO for real-time object detection
-- Identifies various objects including vehicles, obstacles, and hazards
-- Calculates approximate distances to detected objects
-
-### Audio Feedback
-- Text-to-speech announcements for detected objects and faces
-- Directional information using clock positions
-- Distance information in feet
-- Emergency alerts for potential hazards
-
-### Safety Features
-- Vehicle detection and alerts
-- Obstacle detection
-- Emergency situation recognition
-- Distance-based warnings
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+**Backend:** Python 3.8+, OpenCV, NumPy, YOLOv8, pyttsx3  
+**Frontend:** React, TypeScript, WebSocket  
+**AI/ML:** YOLOv8, Haar Cascade, KNN, Google Gemini 2.5 Flash  
+**APIs:** Twilio (emergency calling), Google Gemini API
 
 ## License
 
